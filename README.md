@@ -8,7 +8,7 @@ This repository packages the official [Moli](https://github.com/lexmount/moli) v
 
 ## How it is wired
 
-- `moli serve --layout` listens on `127.0.0.1:9223` only. Upstream warns never to expose raw CDP, so nothing reaches it directly.
+- `moli serve --layout --block-private-networks` listens on `127.0.0.1:9223` only. Upstream warns never to expose raw CDP, so nothing reaches it directly.
 - nginx on the public port forwards **only** `/t/<MOLI_TOKEN>/…` to Moli. `MOLI_TOKEN` is generated per deploy, so the endpoint is a secret URL that works with any client (no custom headers needed).
 - Discovery JSON (`/json/version`, `/json/list`) is rewritten so `webSocketDebuggerUrl` points at `wss://<your-domain>/t/<token>/…`.
 - `/healthz` (Railway healthcheck) and `/` (a short hint) are the only other routes. Everything else is 404.
@@ -35,7 +35,7 @@ Puppeteer: `puppeteer.connect({ browserURL: MOLI_CDP_URL })`. Selenium / WebDriv
 |---|---|---|
 | `MOLI_TOKEN` | generated | Secret path segment that guards the endpoint. Rotate it to revoke access. |
 | `MOLI_CDP_URL` | `https://${{RAILWAY_PUBLIC_DOMAIN}}/t/${{MOLI_TOKEN}}` | Convenience: the full endpoint to paste into your agent |
-| `MOLI_SERVE_ARGS` | `--layout` (image default) | Extra `moli serve` flags, e.g. `--layout --resource` to fetch images/fonts/media, `--obey-robots` |
+| `MOLI_SERVE_ARGS` | `--layout --block-private-networks` (image default) | Extra `moli serve` flags, e.g. add `--resource` to fetch images/fonts/media, `--obey-robots` to honour robots.txt. `--block-private-networks` stops pages from reaching private/internal addresses (incl. other Railway services). |
 
 ## Notes
 
