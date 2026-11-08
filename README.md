@@ -2,7 +2,7 @@
 
 Moli — a lite, fast headless browser for AI agents (CDP, WebDriver Classic and WebDriver BiDi), built in Rust. Deploy on Railway with one click.
 
-[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/new/template?template=PENDING)
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/J008-8)
 
 This repository packages the official [Moli](https://github.com/lexmount/moli) v1.1.22 Linux release binary (Apache-2.0 OR MIT) for Railway. It is an independent community packaging, not affiliated with or endorsed by Lexmount.
 
