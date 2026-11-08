@@ -28,7 +28,7 @@ RUN chmod 755 /usr/local/bin/moli-railway-start
 # MOLI_TOKEN. MOLI_SERVE_ARGS are extra flags for `moli serve`.
 ENV PORT=8080 \
     MOLI_INTERNAL_PORT=9223 \
-    MOLI_SERVE_ARGS="--layout"
+    MOLI_SERVE_ARGS="--layout --block-private-networks"
 EXPOSE 8080
 HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
   CMD curl -sf "http://127.0.0.1:${PORT:-8080}/healthz" || exit 1
